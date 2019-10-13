@@ -8,11 +8,13 @@
 <body>
   <img id="img" width="40%">
   <script src="/socket.io/socket.io.js"></script>
-
+  <script src="js/toBlob.js"></script>
   <script>
     var socket = io();
+
     socket.on('imageConversionByServer', function(data) {
-      document.querySelector("#img").setAttribute("src",data);
+      document.querySelector("#img").setAttribute("src", "data:image/png;base64," + data);
+      console.log(b64toBlob(data).size);
     })
   </script>
 </body>
