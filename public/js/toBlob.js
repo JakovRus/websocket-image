@@ -1,4 +1,6 @@
 function b64toBlob(b64Data, contentType='', sliceSize=512) {
+  console.log(b64Data.slice(0, 100));
+
   const byteCharacters = atob(b64Data);
   const byteArrays = [];
 

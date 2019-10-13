@@ -9,16 +9,7 @@
   <img id="img" width="40%">
   <script src="/socket.io/socket.io.js"></script>
   <script src="js/toBlob.js"></script>
-  <script>
-    var socket = io();
-
-    socket.on('image', function(data) {
-      const response = data.split('_&&&&&_');
-      document.querySelector("#img").setAttribute("src", "data:image/png;base64," + response[1]);
-
-      socket.emit('result', `${b64toBlob(response[1]).size} === ${response[0]}`);
-    })
-  </script>
+  <script src="js/socket.js"></script>
 </body>
 
 </html>
