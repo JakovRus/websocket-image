@@ -12,9 +12,11 @@
   <script>
     var socket = io();
 
-    socket.on('imageConversionByServer', function(data) {
-      document.querySelector("#img").setAttribute("src", "data:image/png;base64," + data);
-      console.log(b64toBlob(data).size);
+    socket.on('image', function(data) {
+      const response = data.split('_&&&&&_');
+      document.querySelector("#img").setAttribute("src", "data:image/png;base64," + response[1]);
+
+      socket.emit('result', `${b64toBlob(response[1]).size} === ${response[0]}`);
     })
   </script>
 </body>
